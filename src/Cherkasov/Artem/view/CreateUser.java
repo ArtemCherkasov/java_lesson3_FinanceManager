@@ -29,11 +29,9 @@ public class CreateUser extends javax.swing.JFrame {
     private DataStoreImpl dataStoreImpl;
 	
     public CreateUser(DataStoreImpl dataStoreImpl) {
-    	
     	super("Finance manager: create user");
     	this.dataStoreImpl = dataStoreImpl;
         initComponents();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -49,34 +47,23 @@ public class CreateUser extends javax.swing.JFrame {
         nameInput = new JTextField();
         surnameInput = new JTextField();
         createButton = new JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setResizable(false);
-
         loginLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
         loginLabel.setText("login:");
-
         passwordLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
         passwordLabel.setText("password:");
-
         nameLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
         nameLabel.setText("name:");
-
         surnameLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
         surnameLabel.setText("surname:");
-
         loginInput.setToolTipText("");
-
         createButton.setText("Create user");
         
         createButton.addMouseListener(new MouseAdapter() {
-        	
         	public void mouseClicked(MouseEvent e) {
-        		
         		createUser(e);
-        		
         	}
-        	
 		});
 
         GroupLayout jPanel1Layout = new GroupLayout(panel);
@@ -143,8 +130,7 @@ public class CreateUser extends javax.swing.JFrame {
         
     }
     
-    private void createUser(MouseEvent evt) {                                      
-    	
+    private void createUser(MouseEvent evt) {
     	if(
     			(!loginInput.getText().isEmpty()) &&
     			(passwordInput.getPassword().length != 0) &&
@@ -152,22 +138,17 @@ public class CreateUser extends javax.swing.JFrame {
     			(!surnameInput.getText().isEmpty())
     	)    		
     	{
-    		
     		User user = new User();
         	user.setLogin(loginInput.getText());
         	user.setPassword(passwordInput.getPassword());
         	user.setName(nameInput.getText());
         	user.setSurname(surnameInput.getText());
-        	
         	dataStoreImpl.addUser(user);
-    		
         	loginInput.setText("");
         	passwordInput.setText("");
         	nameInput.setText("");
         	surnameInput.setText("");
-        	
     	}
-    	
     }
     
 }

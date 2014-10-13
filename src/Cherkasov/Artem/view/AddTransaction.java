@@ -37,13 +37,11 @@ public class AddTransaction extends JDialog {
     private UpdateAccountCallBack callBack;
 
     public AddTransaction(java.awt.Frame parent, boolean modal, DataStoreImpl dataStoreImpl, Account account, UpdateAccountCallBack callBack) {
-        
     	super(parent, modal);
         this.dataStoreImpl = dataStoreImpl;
         this.account = account;
         this.callBack = callBack;
         initComponents();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -72,7 +70,6 @@ public class AddTransaction extends JDialog {
         fundsInput.setText("0.0");
         group.add(replenishmentRadio);
         group.add(withdrawalRadio);
-        
         loadCategories();
         
         addTransactionButton.addMouseListener(new MouseAdapter() {
@@ -81,9 +78,7 @@ public class AddTransaction extends JDialog {
         		
         		Object item = categoriesList.getSelectedItem();
         		
-        		
         		if(((ComboItem)item) != null){
-        			
         			category = ((ComboItem)item).getCategory();
         			Record record = new Record();
             		record.setFunds(replenishmentRadio.isSelected()?Double.valueOf(fundsInput.getText()):-1*Double.valueOf(fundsInput.getText()));
@@ -91,7 +86,6 @@ public class AddTransaction extends JDialog {
             		dataStoreImpl.addRecord(account, record);
             		fundsInput.setText("0.0");
             		callBack.onConfirm();
-            		
         		}
 
         	}
@@ -146,7 +140,6 @@ public class AddTransaction extends JDialog {
         pack();
         setLocationRelativeTo(null);
         setResizable(false);
-        
     }
     
     private void loadCategories(){
@@ -155,11 +148,8 @@ public class AddTransaction extends JDialog {
     	categoriesList.removeAllItems();
     	
     	for(Category category: categories){
-    		
     		categoriesList.addItem(new ComboItem(category.getDescription(), category));
-    		
     	}
-    	
     }
-                   
+    
 }

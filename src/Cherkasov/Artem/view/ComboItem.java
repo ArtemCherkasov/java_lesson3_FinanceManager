@@ -9,49 +9,31 @@ public class ComboItem {
 	private Account account;
 	private Category category;
 	
-	public ComboItem(String key, Account account)
-	{
-	    
+	public ComboItem(String key, Account account){
 		this.key = key;
 	    this.account = account;
-	    
 	}
 	
-	public ComboItem(String key, Category category)
-	{
-	    
+	public ComboItem(String key, Category category){
 		this.key = key;
 	    this.category = category;
-	    
 	}
 	
 	@Override
-	public String toString()
-	{
-	    
+	public String toString(){
 		return key;
-		
 	}
 	
-	public String getKey()
-	{
-	    
+	public String getKey(){
 		return key;
-		
 	}
 	
-	public Account getAccount()
-	{
-	    
+	public Account getAccount(){
 		return account;
-		
 	}
 	
-	public Category getCategory()
-	{
-	    
+	public Category getCategory(){
 		return category;
-		
 	}
 
 }

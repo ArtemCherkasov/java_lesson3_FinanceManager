@@ -47,17 +47,14 @@ public class MainWindow extends javax.swing.JFrame {
     private UpdateAccountCallBack callBack;
 	
     public MainWindow(DataStoreImpl dataStoreImpl, User user) {
-    	
     	super("Finance manager");
     	this.dataStoreImpl = dataStoreImpl;
     	this.user = user;
         initComponents();
-        
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         panel = new JPanel();
         usetNameLabel = new JLabel();
         userSurnameLabel = new JLabel();
@@ -94,13 +91,10 @@ public class MainWindow extends javax.swing.JFrame {
         fundsOutputLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
 
         callBack = new UpdateAccountCallBack() {
-			
 			@Override
 			public void onConfirm() {
-				
 				loadAccounts();
 				loadTransactions();
-				
 			}
 			
 		};
@@ -109,40 +103,28 @@ public class MainWindow extends javax.swing.JFrame {
         addTransactionButton.setText("Add transaction");
         
         addTransactionButton.addMouseListener(new MouseAdapter() {
-        	
         	public void mouseClicked(MouseEvent e) {
-        		
         		addTransactionWindow(e);
-        		
         	}
-        	
 		});
         
         addAccountButton.addMouseListener(new MouseAdapter() {
-        	
         	public void mouseClicked(MouseEvent e) {
-
         		addAccount();
         		loadAccounts();
         		loadTransactions();
-        		
         	}
-        	
 		});
         
         accountList.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				Object item = accountList.getSelectedItem();
-				
+
 				if(((ComboItem)item) != null){
-					
 					account = ((ComboItem)item).getAccount();
 					fundsOutputLabel.setText(account.getFunds().toString());
 					loadTransactions();
-					
 				}
 				
 			}
@@ -225,45 +207,31 @@ public class MainWindow extends javax.swing.JFrame {
     }                        
     
     private void addTransactionWindow(MouseEvent evt) {
-    	
     	AddTransaction addTransaction = new AddTransaction(this, true, dataStoreImpl, account, callBack);
     	addTransaction.setVisible(true);
-    	
     }
     
     private void addAccount(){
-    	
     	Account account = new Account();
     	account.setFunds(0.0);
     	dataStoreImpl.addAccount(user, account);
-    	
     }
     
     private void loadAccounts(){
-    	
     	Set<Account> accounts = dataStoreImpl.getAccounts(user);
-    	
     	accountList.removeAllItems();
-    	
     	for(Account account: accounts){
-    		
     		accountList.addItem(new ComboItem("account id: " + account.getId(), account));
-    		
     	}
-    	
     }
     
     private void loadTransactions(){
-    	
     	Set<Record> records = dataStoreImpl.getRecords(account);
     	listModel.removeAllElements();
     	
     	for (Record record: records){
-    		
     		listModel.addElement(record.getDate() + " " + record.getCategory().getDescription() + " " + record.getFunds());
-    		
     	}
-    	
     }
                
 }

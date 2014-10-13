@@ -29,16 +29,13 @@ public class LoginWindow extends JFrame {
     DataStoreImpl dataStoreImpl;
 
     public LoginWindow() {
-    	
     	super("Finance manager: login");
     	dataStoreImpl = new DataStoreImpl();
     	initComponents();
-        
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         loginPanel = new JPanel();
         loginLabel = new JLabel();
         passwordLabel = new JLabel();
@@ -47,34 +44,24 @@ public class LoginWindow extends JFrame {
         loginButton = new JButton();
         createUserButton = new JButton();
         messageLabel = new JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
         loginLabel.setText("login:");
         passwordLabel.setText("password:");
         loginButton.setText("Login");
         
         loginButton.addMouseListener(new MouseAdapter() {
-        	
             public void mouseClicked(MouseEvent e) {
-            	
             	loginButtonClicked(e);
-                
             }
-            
         });
         
         createUserButton.setText("create");
         
         createUserButton.addMouseListener(new MouseAdapter() {
-        	
         	public void mouseClicked(MouseEvent e) {
-        		
         		createUserWindow(e);
-        		
         	}
-        	
 		});
 
         messageLabel.setForeground(new Color(243, 4, 35));
@@ -122,7 +109,6 @@ public class LoginWindow extends JFrame {
                 .addGap(31, 31, 31))
         );
 
-
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,34 +124,25 @@ public class LoginWindow extends JFrame {
 
         pack();
         setLocationRelativeTo(null);
-        
     }                        
 
     private void loginButtonClicked(MouseEvent evt) {                                      
-    	
     	User user = new User();
 		user.setLogin(loginInput.getText());
 		user.setPassword(passwordInput.getPassword());
 		
 		if (!dataStoreImpl.loginUser(user.getLogin(), user.getPassword())){
-			
 			messageLabel.setText("Incorrect login or Password");
-			
 		} else {
-			
 			MainWindow mainWindow = new MainWindow(dataStoreImpl, dataStoreImpl.getUser(user.getLogin()));
 			this.setVisible(false);
 			mainWindow.setVisible(true);
-			
 		}
-    	
     }
     
     private void createUserWindow(MouseEvent evt) {
-    	    	
     	CreateUser createUser = new CreateUser(dataStoreImpl);
     	createUser.setVisible(true);
-    	
     }
 
 }
