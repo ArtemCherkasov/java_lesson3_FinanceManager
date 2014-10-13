@@ -45,6 +45,7 @@ public class MainWindow extends javax.swing.JFrame {
     private User user;
     private Account account;
     private UpdateAccountCallBack callBack;
+    private Font font;
 	
     public MainWindow(DataStoreImpl dataStoreImpl, User user) {
     	super("Finance manager");
@@ -72,23 +73,23 @@ public class MainWindow extends javax.swing.JFrame {
         userSurnameOutputLabel = new JLabel();
         fundsOutputLabel = new JLabel();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        usetNameLabel.setFont(new Font("DejaVu Sans", 0, 18));
+        font = new Font("DejaVu Sans", 0, 18);
+        usetNameLabel.setFont(font);
         usetNameLabel.setText("User name:");
-        userSurnameLabel.setFont(new Font("DejaVu Sans", 0, 18));
+        userSurnameLabel.setFont(font);
         userSurnameLabel.setText("User surname:");
-        accountsLabel.setFont(new Font("DejaVu Sans", 0, 18));
+        accountsLabel.setFont(font);
         accountsLabel.setText("Accounts:");
-        accountList.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        fundsLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        fundsLabel.setFont(font);
         fundsLabel.setText("Funds:");
         addAccountButton.setText("Add account");
-        transactionLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        transactionLabel.setFont(font);
         transactionLabel.setText("Transaction:");
-        userNameOutputLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); 
+        userNameOutputLabel.setFont(font); 
         userNameOutputLabel.setText(user.getName());
-        userSurnameOutputLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); 
+        userSurnameOutputLabel.setFont(font); 
         userSurnameOutputLabel.setText(user.getSurname());
-        fundsOutputLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        fundsOutputLabel.setFont(font);
 
         callBack = new UpdateAccountCallBack() {
 			@Override

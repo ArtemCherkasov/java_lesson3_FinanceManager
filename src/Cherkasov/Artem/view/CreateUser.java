@@ -1,5 +1,6 @@
 package Cherkasov.Artem.view;
 
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,6 +28,7 @@ public class CreateUser extends javax.swing.JFrame {
     private JTextField nameInput;
     private JTextField surnameInput;
     private DataStoreImpl dataStoreImpl;
+    private Font font;
 	
     public CreateUser(DataStoreImpl dataStoreImpl) {
     	super("Finance manager: create user");
@@ -49,13 +51,14 @@ public class CreateUser extends javax.swing.JFrame {
         createButton = new JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setResizable(false);
-        loginLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
+        font = new Font("DejaVu Sans", 0, 14);
+        loginLabel.setFont(font);
         loginLabel.setText("login:");
-        passwordLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
+        passwordLabel.setFont(font);
         passwordLabel.setText("password:");
-        nameLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
+        nameLabel.setFont(font);
         nameLabel.setText("name:");
-        surnameLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 14));
+        surnameLabel.setFont(font);
         surnameLabel.setText("surname:");
         loginInput.setToolTipText("");
         createButton.setText("Create user");

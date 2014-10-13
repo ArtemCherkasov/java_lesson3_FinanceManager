@@ -1,5 +1,6 @@
 package Cherkasov.Artem.view;
 
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Set;
@@ -35,6 +36,7 @@ public class AddTransaction extends JDialog {
     private Account account;
     private Category category;
     private UpdateAccountCallBack callBack;
+    private Font font;
 
     public AddTransaction(java.awt.Frame parent, boolean modal, DataStoreImpl dataStoreImpl, Account account, UpdateAccountCallBack callBack) {
     	super(parent, modal);
@@ -57,15 +59,16 @@ public class AddTransaction extends JDialog {
         group = new ButtonGroup();
         setTitle("Finance manager: add transaction");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        replenishmentRadio.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        font = new Font("DejaVu Sans", 0, 18);
+        replenishmentRadio.setFont(font);
         replenishmentRadio.setText("Replenishment");
-        withdrawalRadio.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        withdrawalRadio.setFont(font);
         withdrawalRadio.setText("Withdrawal");
         replenishmentRadio.setSelected(true);
-        categoryLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        categoryLabel.setFont(font);
         categoryLabel.setText("Category:");
         addTransactionButton.setText("Add transaction");
-        fundsLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        fundsLabel.setFont(font);
         fundsLabel.setText("Funds:");
         fundsInput.setText("0.0");
         group.add(replenishmentRadio);
