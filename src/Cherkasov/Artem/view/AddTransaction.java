@@ -87,6 +87,7 @@ public class AddTransaction extends JDialog {
             		record.setFunds(replenishmentRadio.isSelected()?Double.valueOf(fundsInput.getText()):-1*Double.valueOf(fundsInput.getText()));
             		record.setCategory(category);
             		dataStoreImpl.addRecord(account, record);
+            		account.setFunds(account.getFunds() + record.getFunds());
             		fundsInput.setText("0.0");
             		callBack.onConfirm();
         		}
